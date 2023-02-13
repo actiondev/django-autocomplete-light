@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django import forms
 from django.template.loader import render_to_string
 from django.utils import safestring
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 """
 The provided widgets are meant to rely on an Autocomplete class.
