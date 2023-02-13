@@ -21,7 +21,7 @@ from django.db.models import ForeignKey, ManyToManyField, OneToOneField
 from django.forms.models import modelform_factory as django_modelform_factory
 from django.forms.models import ModelFormMetaclass as DjangoModelFormMetaclass
 from django.utils.encoding import force_text
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from .contrib.taggit_field import TaggitField
 from .fields import (GenericModelChoiceField, GenericModelMultipleChoiceField,
