@@ -5,7 +5,7 @@ if VERSION < (1, 5):
 elif VERSION < (1, 8):
     from django.conf.urls import patterns, url  # noqa
 else:
-    from django.conf.urls import url  # noqa
+    from django.urls import re_path as url  # noqa
     patterns = None
 
 
