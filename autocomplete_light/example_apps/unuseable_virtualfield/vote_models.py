@@ -9,7 +9,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import IntegrityError, models, transaction
 from django.db.models import Count
 from django.db.models.query import QuerySet
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 # Django 1.5 add support for custom auth user model
 if django.VERSION >= (1, 5):

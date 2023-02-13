@@ -5,7 +5,7 @@ from django.urls import reverse, NoReverseMatch
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.encoding import force_str
 from django.utils.html import escape
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 __all__ = ('AutocompleteInterface', 'AutocompleteBase')
 
