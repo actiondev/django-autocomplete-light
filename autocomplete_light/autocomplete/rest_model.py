@@ -2,7 +2,7 @@ import urllib
 import six
 
 from django import http
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 
 from .model import AutocompleteModel
 
@@ -67,7 +67,7 @@ class AutocompleteRestModel(AutocompleteModel):
 
     def choices_for_request(self):
         choices = super(AutocompleteRestModel, self).choices_for_request()
-        unicodes = [force_text(choice) for choice in choices]
+        unicodes = [force_str(choice) for choice in choices]
 
         slots = self.limit_choices - len(choices)
 
@@ -76,7 +76,7 @@ class AutocompleteRestModel(AutocompleteModel):
 
             for choice in self.get_remote_choices(slots):
                 # avoid data that's already in local
-                if force_text(choice) in unicodes:
+                if force_str(choice) in unicodes:
                     continue
 
                 choices.append(choice)

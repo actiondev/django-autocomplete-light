@@ -1,6 +1,6 @@
 from autocomplete_light.exceptions import AutocompleteNotRegistered
 from django import http
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.views import generic
 from django.views.generic import base
 
@@ -84,7 +84,7 @@ class CreateView(generic.CreateView):
         html = []
         html.append('<script type="text/javascript">')
         html.append('opener.dismissAddAnotherPopup( window, "%s", "%s" );' % (
-            force_text(obj.pk), force_text(obj).replace('"', '\\"')))
+            force_str(obj.pk), force_str(obj).replace('"', '\\"')))
         html.append('</script>')
 
         html = ''.join(html)

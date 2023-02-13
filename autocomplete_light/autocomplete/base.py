@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import six
 from django.urls import reverse, NoReverseMatch
 from django.core.exceptions import ImproperlyConfigured
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.html import escape
 from django.utils.translation import ugettext_lazy as _
 
@@ -201,11 +201,11 @@ class AutocompleteBase(AutocompleteInterface):
         Return the value of a choice. This simple implementation returns the
         textual representation.
         """
-        return force_text(choice)
+        return force_str(choice)
 
     def choice_label(self, choice):
         """
         Return the human-readable representation of a choice. This simple
         implementation returns the textual representation.
         """
-        return force_text(choice)
+        return force_str(choice)

@@ -4,7 +4,7 @@ import unittest
 import pytest
 
 from django import VERSION
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 
 from autocomplete_light.example_apps.autocomplete_test_case_app.models import (
         NonIntegerPk, SubGroup, CustomSchema, CustomIntegerPk, Caps)
@@ -125,18 +125,18 @@ class AutocompleteModelTestCase(AutocompleteTestCase):
                 'fixture': make_get_request('q=j'),
                 'expected': ''.join([
                     '<span data-value="%s">%s</span>' % (
-                        self.jack.pk, force_text(self.jack)),
+                        self.jack.pk, force_str(self.jack)),
                     '<span data-value="%s">%s</span>' % (
-                        self.james.pk, force_text(self.james)),
+                        self.james.pk, force_str(self.james)),
                 ])
             },
             {
                 'fixture': make_get_request(),
                 'expected': ''.join([
                     '<span data-value="%s">%s</span>' % (
-                        self.abe.pk, force_text(self.abe)),
+                        self.abe.pk, force_str(self.abe)),
                     '<span data-value="%s">%s</span>' % (
-                        self.jack.pk, force_text(self.jack)),
+                        self.jack.pk, force_str(self.jack)),
                 ])
             },
         )

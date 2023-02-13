@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 
 from .list import AutocompleteList
 
@@ -33,7 +33,7 @@ class AutocompleteChoiceList(AutocompleteList):
         this against :py:attr:`choices` as an argument :py:func:`sorted`.
     """
     def order_by(cls, choice):
-        return force_text(choice[1]).lower()
+        return force_str(choice[1]).lower()
 
     def choices_for_values(self):
         """
@@ -56,7 +56,7 @@ class AutocompleteChoiceList(AutocompleteList):
         q = self.request.GET.get('q', '').lower().strip()
 
         for choice in self.choices:
-            m = force_text(choice[0]).lower() + force_text(choice[1]).lower()
+            m = force_str(choice[0]).lower() + force_str(choice[1]).lower()
             if q in m:
                 requests_choices.append(choice)
 

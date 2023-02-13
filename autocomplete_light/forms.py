@@ -20,7 +20,7 @@ from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
 from django.db.models import ForeignKey, ManyToManyField, OneToOneField
 from django.forms.models import modelform_factory as django_modelform_factory
 from django.forms.models import ModelFormMetaclass as DjangoModelFormMetaclass
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.translation import gettext_lazy as _
 
 from .contrib.taggit_field import TaggitField
@@ -52,7 +52,7 @@ class SelectMultipleHelpTextRemovalMixin(forms.BaseModelForm):
     def __init__(self, *args, **kwargs):
         super(SelectMultipleHelpTextRemovalMixin, self).__init__(*args,
                 **kwargs)
-        msg = force_text(M)
+        msg = force_str(M)
 
         for name, field in self.fields.items():
             widget = field.widget

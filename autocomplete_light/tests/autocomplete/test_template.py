@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.template import Context, Template
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 
 from ...example_apps.autocomplete_test_case_app.models import Group, User
 from .case import *
@@ -61,9 +61,9 @@ class AutocompleteModelTemplateTestCase(AutocompleteTestCase):
                 'expected': ''.join([
                     '<ul>',
                     '<li data-value="%s">%s</li>' % (
-                        self.jack.pk, force_text(self.jack)),
+                        self.jack.pk, force_str(self.jack)),
                     '<li data-value="%s">%s</li>' % (
-                        self.james.pk, force_text(self.james)),
+                        self.james.pk, force_str(self.james)),
                     '</ul>',
                 ])
             },
@@ -72,9 +72,9 @@ class AutocompleteModelTemplateTestCase(AutocompleteTestCase):
                 'expected': ''.join([
                     '<ul>',
                     '<li data-value="%s">%s</li>' % (
-                        self.abe.pk, force_text(self.abe)),
+                        self.abe.pk, force_str(self.abe)),
                     '<li data-value="%s">%s</li>' % (
-                        self.jack.pk, force_text(self.jack)),
+                        self.jack.pk, force_str(self.jack)),
                     '</ul>',
                 ])
             },

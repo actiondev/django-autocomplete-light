@@ -4,7 +4,7 @@ import autocomplete_light.shortcuts as autocomplete_light
 import six
 from django.core.urlresolvers import reverse
 from django.test import Client, RequestFactory, TestCase
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 
 try:
     from unittest.mock import Mock, MagicMock, patch
@@ -74,9 +74,9 @@ class RegistryViewTestCase(TestCase):
 
             response = self.superuser.get(reverse('autocomplete_light_registry'))
 
-        self.assertIn('List of your 1 registered autocompletes', force_text(response.content))
+        self.assertIn('List of your 1 registered autocompletes', force_str(response.content))
         self.assertIn(reverse('autocomplete_light_autocomplete',
-            args=['UserAutocomplete']), force_text(response.content))
+            args=['UserAutocomplete']), force_str(response.content))
 
 
 class AutocompleteViewTestCase(TestCase):
@@ -103,7 +103,7 @@ class AutocompleteViewTestCase(TestCase):
         registry.__getitem__.return_value.assert_called_with(request=request)
         registry.__getitem__.return_value.return_value.autocomplete_html.assert_called_with()
 
-        self.assertIn('foo', force_text(response.content))
+        self.assertIn('foo', force_str(response.content))
 
     def test_post(self):
         registry = MagicMock()
@@ -137,8 +137,8 @@ class CreateViewTestCase(TestCase):
         expected = '''
         <script type="text/javascript">opener.dismissAddAnotherPopup( window, "5", "abc \\"yoo\\"" );</script>
         '''
-        self.assertEqual(force_text(expected.strip()),
-                force_text(output.content.strip()))
+        self.assertEqual(force_str(expected.strip()),
+                force_str(output.content.strip()))
         self.assertEqual(output.status_code, 201)
 
     def test_is_popup(self):

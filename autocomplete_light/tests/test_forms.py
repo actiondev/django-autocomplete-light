@@ -7,7 +7,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.forms.models import modelform_factory
 from django.test import TestCase
 from django.utils import translation
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 
 from ..example_apps.basic.forms import (DjangoCompatMeta, FkModelForm,
                                         GfkModelForm, MtmModelForm,
@@ -55,13 +55,13 @@ class SelectMultipleHelpTextRemovalMixin(object):
             class Meta(DjangoCompatMeta):
                 model = MtmModel
         form = ModelForm()
-        help_text = force_text(form.fields['relation'].help_text).strip()
+        help_text = force_str(form.fields['relation'].help_text).strip()
 
         class ModelForm(autocomplete_light.ModelForm):
             class Meta(DjangoCompatMeta):
                 model = MtmModel
         form = ModelForm()
-        my_help_text = force_text(form.fields['relation'].help_text).strip()
+        my_help_text = force_str(form.fields['relation'].help_text).strip()
 
         # If help_text is not empty (which is wasn't before Django 1.8 fixed
         # #9321), test that it's empty in autocomplete_light's ModelForm.
@@ -106,7 +106,7 @@ class ModelFormBaseMixin(BaseModelFormMixin):
             # django-taggit enforces verbose_name=_('Tags')
             # bug reported at:
             # https://github.com/alex/django-taggit/issues/177
-            self.assertEqual(force_text(self.form[name].label), name.capitalize())
+            self.assertEqual(force_str(self.form[name].label), name.capitalize())
 
         self.assertTrue(isinstance(self.form.fields[name],
             self.field_class))
